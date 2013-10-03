@@ -162,6 +162,14 @@ package_download "nodejs" "${NODE_VERSION}" "${VENDORED_NODE}"
 package_download "npm" "${NPM_VERSION}" "${VENDORED_NPM}"
 package_download "scons" "${SCONS_VERSION}" "${VENDORED_SCONS}"
 
+# install and configure compass to compile sass
+export GEM_HOME=$PWD/gems
+mkdir -p $GEM_HOME
+gem install compass
+
+#compile sass
+$GEM_HOME/bin/compass compile scss-dir css-dir
+
 # vendor node into the slug
 PATH="$BUILD_DIR/bin:$PATH"
 echo "-----> Vendoring node into slug"
