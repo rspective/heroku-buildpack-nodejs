@@ -194,6 +194,9 @@ gem install compass
 echo "-----> compile sass"
 $GEM_HOME/bin/compass compile "$BUILD_DIR/app/styles/main.scss"
 
+# run min task
+grunt min
+
 echo "-----> Building runtime environment"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
