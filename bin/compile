@@ -221,13 +221,13 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   run_npm "grunt-rev"
   run_npm "grunt-open"
   run_npm "grunt-concurrent"
-  run_npm "load-grunt-tasks"
-  run_npm "connect-livereload"
   run_npm "grunt-google-cdn"
   run_npm "grunt-ngmin"
-  run_npm "time-grunt"
+  run_npm "grunt-karma"
+  run_npm "grunt-bower-install"
+
   echo "-----> Found Gruntfile, running grunt tasks to minify"
-  $BUILD_DIR/node_modules/.bin/grunt min
+  ./minify-production-sources.sh
 else
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
