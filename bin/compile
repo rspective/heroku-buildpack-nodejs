@@ -203,31 +203,36 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   # make sure that grunt and grunt-cli are installed locally
   run_npm "install grunt-cli"
   run_npm "install grunt"
-  run_npm "grunt-contrib-copy"
-  run_npm "grunt-contrib-concat"
-  run_npm "grunt-contrib-coffee"
-  run_npm "grunt-contrib-uglify"
-  run_npm "grunt-contrib-compass"
-  run_npm "grunt-contrib-jshint"
-  run_npm "grunt-contrib-cssmin"
-  run_npm "grunt-contrib-connect"
-  run_npm "grunt-contrib-clean"
-  run_npm "grunt-contrib-htmlmin"
-  run_npm "grunt-contrib-imagemin"
-  run_npm "grunt-contrib-watch"
-  run_npm "grunt-autoprefixer"
-  run_npm "grunt-usemin"
-  run_npm "grunt-svgmin"
-  run_npm "grunt-rev"
-  run_npm "grunt-open"
-  run_npm "grunt-concurrent"
-  run_npm "grunt-google-cdn"
-  run_npm "grunt-ngmin"
-  run_npm "grunt-karma"
-  run_npm "grunt-bower-install"
+  run_npm "install grunt-contrib-copy"
+  run_npm "install grunt-contrib-concat"
+  run_npm "install grunt-contrib-coffee"
+  run_npm "install grunt-contrib-uglify"
+  run_npm "install grunt-contrib-compass"
+  run_npm "install grunt-contrib-jshint"
+  run_npm "install grunt-contrib-cssmin"
+  run_npm "install grunt-contrib-connect"
+  run_npm "install grunt-contrib-clean"
+  run_npm "install grunt-contrib-htmlmin"
+  run_npm "install grunt-contrib-imagemin"
+  run_npm "install grunt-contrib-watch"
+  run_npm "install grunt-autoprefixer"
+  run_npm "install grunt-usemin"
+  run_npm "install grunt-svgmin"
+  run_npm "install grunt-rev"
+  run_npm "install grunt-open"
+  run_npm "install grunt-concurrent"
+  run_npm "install grunt-google-cdn"
+  run_npm "install grunt-ngmin"
+  run_npm "install grunt-karma"
+  run_npm "install grunt-bower-install"
 
   echo "-----> Found Gruntfile, running grunt tasks to minify"
-  ./minify-production-sources.sh
+  # Switch symbolic link to production environment.
+  rm $BUILD_DIR/Gruntfile.js 
+  ln -s $BUILD_DIR/Gruntfile.production.js $BUILD_DIR/Gruntfile.js
+
+  # grunt minify
+  $BUILD_DIR/node_modules/.bin/grunt min
 else
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
