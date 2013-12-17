@@ -176,8 +176,8 @@ export CPPPATH="$INCLUDE_PATH:$CPPPATH"
 
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
-#run_npm "install --production"
-run_npm "install"
+run_npm "install --production"
+#run_npm "install"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
 
@@ -203,6 +203,29 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   # make sure that grunt and grunt-cli are installed locally
   run_npm "install grunt-cli"
   run_npm "install grunt"
+  run_npm "grunt-contrib-copy"
+  run_npm "grunt-contrib-concat"
+  run_npm "grunt-contrib-coffee"
+  run_npm "grunt-contrib-uglify"
+  run_npm "grunt-contrib-compass"
+  run_npm "grunt-contrib-jshint"
+  run_npm "grunt-contrib-cssmin"
+  run_npm "grunt-contrib-connect"
+  run_npm "grunt-contrib-clean"
+  run_npm "grunt-contrib-htmlmin"
+  run_npm "grunt-contrib-imagemin"
+  run_npm "grunt-contrib-watch"
+  run_npm "grunt-autoprefixer"
+  run_npm "grunt-usemin"
+  run_npm "grunt-svgmin"
+  run_npm "grunt-rev"
+  run_npm "grunt-open"
+  run_npm "grunt-concurrent"
+  run_npm "load-grunt-tasks"
+  run_npm "connect-livereload"
+  run_npm "grunt-google-cdn"
+  run_npm "grunt-ngmin"
+  run_npm "time-grunt"
   echo "-----> Found Gruntfile, running grunt tasks to minify"
   $BUILD_DIR/node_modules/.bin/grunt min
 else
