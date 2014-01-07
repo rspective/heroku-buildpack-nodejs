@@ -208,6 +208,8 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   run_npm "install grunt-contrib-uglify"
   run_npm "install grunt-contrib-cssmin"
   run_npm "install grunt-usemin"
+  run_npm "install jade"
+  run_npm "install firebase"
 
   echo "-----> Found Gruntfile, running grunt tasks to minify"
   # Switch symbolic link to production environment.
